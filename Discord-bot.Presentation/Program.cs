@@ -1,14 +1,15 @@
-﻿using Discord_Bot.Application;
-using Discord_bot.Domain;
-using discord_bot.Extensions;
-using discord_bot.infrastructure;
+﻿using Discord_Bot.Application.Extensions;
+using Discord_Bot.Application.Services;
+using Discord_bot.Domain.Extensions;
+using Discord_bot.infrastructure.Extensions;
+using Discord_bot.Presentation.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace discord_bot;
+namespace Discord_bot.Presentation;
 
 class Program
 {
-    static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var serviceProvider = new ServiceCollection()
             .AddPresentation()
@@ -16,5 +17,8 @@ class Program
             .AddDomain()
             .AddInfrastructure()
             .BuildServiceProvider();
+        
+        var discordService = serviceProvider.GetRequiredService<IDiscordService>();
+        await discordService.StartAsync();
     }
 }

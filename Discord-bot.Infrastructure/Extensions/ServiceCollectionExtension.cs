@@ -1,11 +1,19 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Discord_Bot.Application.Services;
+using Discord_Bot.infrastructure.API;
+using Discord_bot.infrastructure.Configuration;
+using Discord.WebSocket;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace discord_bot.infrastructure;
+namespace Discord_bot.infrastructure.Extensions;
 
 public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
+        services
+            .AddSingleton<IDiscordService, DiscordService>()
+            .AddSingleton<DiscordSocketClient>()
+            .AddSingleton<DiscordOptions>();
         return services;
     }
 }

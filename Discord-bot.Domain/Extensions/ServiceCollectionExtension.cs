@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Discord_bot.Domain;
+namespace Discord_bot.Domain.Extensions;
 
 public static class ServiceCollectionExtension
 {
