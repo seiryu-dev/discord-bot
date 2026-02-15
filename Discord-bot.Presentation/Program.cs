@@ -1,5 +1,5 @@
 ﻿using Discord_Bot.Application.Extensions;
-using Discord_Bot.Application.Services;
+using Discord_Bot.Application.Interfaces;
 using Discord_bot.Domain.Extensions;
 using Discord_bot.infrastructure.Extensions;
 using Discord_bot.Presentation.Extensions;

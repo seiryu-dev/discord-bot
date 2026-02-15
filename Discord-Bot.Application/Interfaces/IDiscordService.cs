@@ -1,4 +1,4 @@
-namespace Discord_Bot.Application.Services;
+namespace Discord_Bot.Application.Interfaces;
 
 public interface IDiscordService
 {

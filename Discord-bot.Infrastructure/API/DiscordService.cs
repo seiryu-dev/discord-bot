@@ -1,4 +1,4 @@
-using Discord_Bot.Application.Services;
+using Discord_Bot.Application.Interfaces;
 using Discord_bot.infrastructure.Configuration;
 using Discord;
 using Discord.WebSocket;
