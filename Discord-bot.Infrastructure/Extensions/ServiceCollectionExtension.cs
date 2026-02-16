@@ -13,7 +13,7 @@ public static class ServiceCollectionExtension
         services
             .AddSingleton<IDiscordService, DiscordService>()
             .AddSingleton<DiscordSocketClient>()
-            .AddSingleton<DiscordOptions>();
+            .AddSingleton<DiscordConfigurations>();
         return services;
     }
 }
