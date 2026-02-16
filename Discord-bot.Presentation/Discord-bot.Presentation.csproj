@@ -19,4 +19,10 @@
       <ProjectReference Include="..\Discord-bot.Infrastructure\Discord-bot.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update=".env.example">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
