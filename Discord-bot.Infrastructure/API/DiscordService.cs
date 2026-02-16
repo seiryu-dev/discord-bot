@@ -1,4 +1,5 @@
 using Discord_Bot.Application.Interfaces;
+using Discord_bot.Domain.Entities;
 using Discord_bot.infrastructure.Configuration;
 using Discord;
 using Discord.WebSocket;
@@ -30,5 +31,33 @@ public class DiscordService : IDiscordService
     {
         Console.WriteLine(message.ToString());
         return Task.CompletedTask;
+    }
+
+    public async Task SendPoll(BotPoll botPoll)
+    {
+        var poll = new PollProperties()
+        {
+            Question = new()
+            {
+                Text = botPoll.Question,
+            },
+            Duration = 6,
+            AllowMultiselect = false,
+            LayoutType = PollLayout.Default
+        };
+        
+        foreach (var option in botPoll.Options)
+        {
+            var answer = new PollMediaProperties()
+            {
+                Text =  option,
+            };
+            
+            poll.Answers.Add(answer);
+        }
+        
+        var guild = _client.GetGuild(_discordConfigurations.GuildId);
+        var pollChannel = guild.GetTextChannel(_discordConfigurations.ChannelId);
+        await pollChannel.SendMessageAsync(poll: poll);
     }
 }
